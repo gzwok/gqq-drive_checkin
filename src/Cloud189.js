@@ -149,21 +149,21 @@ const main = async () => {
         const { familyCapacityInfo } = await cloudClient.getUserSizeInfo();
 
         logger.log(
-          `${firstSpace}实际：个人容量+ ${
+          `${firstSpace}实际：个人+ ${
             (cloudCapacityInfo2.totalSize - cloudCapacityInfo0.totalSize) /
             1024 /
             1024
-          }M, 家庭容量+ ${
+          }M, 家庭+ ${
             (familyCapacityInfo.totalSize - familyCapacitySize2) / 1024 / 1024
           }M`
         );
         logger.log(
-          `${firstSpace}个人总容量：${(
+          `${firstSpace}个人：${(
             cloudCapacityInfo2.totalSize /
             1024 /
             1024 /
             1024
-          ).toFixed(2)}G, 家庭总容量：${(
+          ).toFixed(2)}G, 家庭：${(
             familyCapacityInfo2.totalSize /
             1024 /
             1024 /
@@ -181,7 +181,7 @@ const main = async () => {
     userNameInfo = mask(firstUserName, 3, 7);
     const capacityChange = familyCapacitySize2 - familyCapacitySize;
     logger.log(
-      `主账号${userNameInfo} 家庭容量+ ${capacityChange / 1024 / 1024}M`
+      `主账号${userNameInfo} 家庭+ ${capacityChange / 1024 / 1024}M`
     );
 
     cloudClient = cloudClientMap.get(firstUserName);
@@ -190,12 +190,12 @@ const main = async () => {
       familyCapacityInfo: familyCapacityInfo2,
     } = await cloudClient.getUserSizeInfo();
     logger.log(
-      `个人总容量：${(
+      `个人：${(
         cloudCapacityInfo2.totalSize /
         1024 /
         1024 /
         1024
-      ).toFixed(2)}G, 家庭总容量：${(
+      ).toFixed(2)}G, 家庭：${(
         familyCapacityInfo2.totalSize /
         1024 /
         1024 /
@@ -213,6 +213,6 @@ const main = async () => {
     logger.log("\n\n");
     const events = recording.replay();
     const content = events.map((e) => `${e.data.join("")}`).join("  \n");
-    push("2350-1天翼自动签到git", content);
+    push("2350-1天翼云盘签到git", content);
   }
 })();
